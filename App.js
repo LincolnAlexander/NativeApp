@@ -19,14 +19,43 @@
 //   },
 // });
 import React from "react";
-import { NativeBaseProvider, Box, Text } from "native-base";
+import {
+  NativeBaseProvider,
+  Box,
+  Header,
+  Body,
+  Heading,
+  Footer,
+  Title,
+  useFormControlContext,
+  Text,
+  Center,
+  Container,
+} from "native-base";
 
+function Example() {
+  return (
+    <Center>
+      <Container>
+        <Heading>
+          A component library for the
+          <Text color="emerald.500"> React Ecosystem</Text>
+        </Heading>
+        <Text mt="3" fontWeight="medium">
+          NativeBase is a simple, modular and accessible component library that
+          gives you building blocks to build you React applications.
+        </Text>
+      </Container>
+    </Center>
+  );
+}
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box fontSize="8xl">
-        <Text fontSize="6xl">Hello, World</Text>
-      </Box>
+      <Center flex={1} px="3" borderColor="">
+        <Example flex={10} />
+        <Example />
+      </Center>
     </NativeBaseProvider>
   );
 }
