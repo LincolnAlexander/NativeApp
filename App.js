@@ -19,6 +19,9 @@
 //   },
 // });
 import React from "react";
+import { View, StyleSheet } from "react-native";
+import { useFonts } from "expo-font";
+//import * as SplashScreen from "expo-splash-screen";
 import {
   NativeBaseProvider,
   Box,
@@ -38,24 +41,25 @@ function Example() {
     <Center>
       <Container>
         <Heading>
-          A component library for the
           <Text color="emerald.500"> React Ecosystem</Text>
         </Heading>
-        <Text mt="3" fontWeight="medium">
-          NativeBase is a simple, modular and accessible component library that
-          gives you building blocks to build you React applications.
-        </Text>
       </Container>
     </Center>
   );
 }
+
 export default function App() {
+  const [loaded] = useFonts({
+    Jost: require("./assets/fonts/Jost-Regular.ttf"),
+  });
+
+  if (!loaded) return null;
   return (
     <NativeBaseProvider>
-      <Center flex={1} px="3" borderColor="">
-        <Example flex={10} />
-        <Example />
-      </Center>
+      <Example />
+      <Text fontFamily="Jost" fontSize="5xl">
+        ssa
+      </Text>
     </NativeBaseProvider>
   );
 }
