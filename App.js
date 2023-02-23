@@ -34,6 +34,7 @@ import {
   Text,
   Center,
   Container,
+  Stack,
 } from "native-base";
 
 function Example() {
@@ -48,6 +49,22 @@ function Example() {
   );
 }
 
+function AppColor() {
+  return (
+    <Center flex="1" bgColor="#E6EBD5" w="100%">
+      <Example />
+    </Center>
+  );
+}
+
+function LoginBox() {
+  return (
+    <Center width="80%" height="30%" bg="#B6AD90">
+      <Stack></Stack>
+    </Center>
+  );
+}
+
 export default function App() {
   const [loaded] = useFonts({
     Jost: require("./assets/fonts/Jost-Regular.ttf"),
@@ -56,10 +73,26 @@ export default function App() {
   if (!loaded) return null;
   return (
     <NativeBaseProvider>
-      <Example />
+      {/* <LoginBox /> */}
+      {/* <Center flex="1">
+          <Container>
+            <Text>ss</Text>
+          </Container>
+          <Text>aa</Text>
+          
+        </Center> */}
+
+      {/* <Example />
       <Text fontFamily="Jost" fontSize="5xl">
         ssa
-      </Text>
+      </Text> */}
+      <Box flex="1" bg="#E6EBD5" alignItems="center">
+        <Container>
+          <Text fontFamily="Jost" fontSize="2xl">
+            Quote
+          </Text>
+        </Container>
+      </Box>
     </NativeBaseProvider>
   );
 }
