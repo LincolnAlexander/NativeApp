@@ -35,6 +35,7 @@ import {
   Center,
   Container,
   Stack,
+  VStack,
 } from "native-base";
 
 function Example() {
@@ -86,12 +87,63 @@ export default function App() {
       <Text fontFamily="Jost" fontSize="5xl">
         ssa
       </Text> */}
-      <Box flex="1" bg="#E6EBD5" alignItems="center">
-        <Container>
-          <Text fontFamily="Jost" fontSize="2xl">
+      <Box
+        flex="1"
+        bg="#E6EBD5"
+        alignItems="center"
+        justifyContent={"center"}
+        borderWidth="2"
+        borderColor="cyan.500"
+        flexDirection={"column"}
+        w="100%"
+      >
+        <Container
+          flex="1"
+          borderWidth="2"
+          borderColor="cyan.500"
+          w={"full"}
+          alignItems={"center"}
+          justifyContent="center"
+          maxWidth="100%"
+        >
+          <Text fontFamily="Jost" fontSize="4xl">
             Quote
           </Text>
         </Container>
+        <Container
+          flex="2"
+          borderWidth="2"
+          borderColor="cyan.500"
+          width="100%"
+          alignItems={"center"}
+          justifyContent="center"
+          maxWidth="100%"
+        >
+          <Container
+            flex="1"
+            bg="#B6AD90"
+            borderColor={"amber.300"}
+            borderWidth="2"
+            width={"75%"}
+            height={"80%"}
+            maxHeight="80%"
+            maxWidth="100%"
+          >
+            <VStack
+              flex="1"
+              space={10}
+              alignItems="center"
+              w="full"
+              maxHeight={"full"}
+              justifyContent="center"
+            >
+              <Center w="234" h="50" bg="indigo.300" rounded="md" shadow={3} />
+              <Center w="234" h="50" bg="indigo.500" rounded="md" shadow={3} />
+              <Center w="234" h="50" bg="indigo.700" rounded="md" shadow={3} />
+            </VStack>
+          </Container>
+        </Container>
+        <Container flex={"1"}></Container>
       </Box>
     </NativeBaseProvider>
   );
