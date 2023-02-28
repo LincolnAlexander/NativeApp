@@ -18,8 +18,8 @@
 //     justifyContent: 'center',
 //   },
 // });
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 import { useFonts } from "expo-font";
 //import * as SplashScreen from "expo-splash-screen";
 import {
@@ -75,6 +75,13 @@ export default function App() {
     Jost: require("./assets/fonts/Jost-Regular.ttf"),
   });
 
+  const [username, setUsername] = React.useState({});
+  const [password, setPassword] = React.useState({});
+
+  const validate = () => {
+    if (username.name === undefined) Alert.alert("Undefined");
+    else Alert.alert("" + username.name);
+  };
   if (!loaded) return null;
   return (
     <NativeBaseProvider>
@@ -162,6 +169,9 @@ export default function App() {
                       fontSize="sm"
                       _focus={{ bg: "warmGray.50" }}
                       borderWidth="0"
+                      onChangeText={(value) =>
+                        setUsername({ ...username, name: value })
+                      }
                     />
                     {/* <FormControl.HelperText>
                       Must be atleast 6 characters.
@@ -209,7 +219,7 @@ export default function App() {
                 </FormControl>
               </Box>
               <Box width={"100%"} borderWidth={"0"} margin="2">
-                <Button mx="8" bgColor={"black"}>
+                <Button mx="8" bgColor={"black"} onPress={validate}>
                   <Text fontFamily="Jost" fontSize="20px" color={"white"}>
                     Sign In
                   </Text>
