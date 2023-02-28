@@ -36,6 +36,10 @@ import {
   Container,
   Stack,
   VStack,
+  FormControl,
+  Input,
+  WarningOutlineIcon,
+  Button,
 } from "native-base";
 
 function Example() {
@@ -122,24 +126,95 @@ export default function App() {
           <Container
             flex="1"
             bg="#B6AD90"
-            borderColor={"amber.300"}
-            borderWidth="2"
             width={"75%"}
             height={"80%"}
             maxHeight="80%"
             maxWidth="100%"
+            borderRadius={"sm"}
           >
             <VStack
               flex="1"
-              space={10}
+              // space={10}
               alignItems="center"
               w="full"
               maxHeight={"full"}
               justifyContent="center"
             >
-              <Center w="234" h="50" bg="indigo.300" rounded="md" shadow={3} />
-              <Center w="234" h="50" bg="indigo.500" rounded="md" shadow={3} />
-              <Center w="234" h="50" bg="indigo.700" rounded="md" shadow={3} />
+              <Box w="100%" margin={"2"} borderWidth={"0"}>
+                <FormControl isRequired>
+                  <Stack mx="8">
+                    <FormControl.Label>
+                      <Text
+                        fontFamily={"Jost"}
+                        fontSize="20px"
+                        fontWeight={"normal"}
+                      >
+                        Username
+                      </Text>
+                    </FormControl.Label>
+                    <Input
+                      bg="white"
+                      shadow={2}
+                      type="text"
+                      defaultValue=""
+                      placeholder="Enter Username"
+                      fontFamily={"Jost"}
+                      fontSize="sm"
+                      _focus={{ bg: "warmGray.50" }}
+                      borderWidth="0"
+                    />
+                    {/* <FormControl.HelperText>
+                      Must be atleast 6 characters.
+                    </FormControl.HelperText> */}
+                    <FormControl.ErrorMessage
+                      leftIcon={<WarningOutlineIcon size="xs" />}
+                    >
+                      Atleast 6 characters are required.
+                    </FormControl.ErrorMessage>
+                  </Stack>
+                </FormControl>
+              </Box>
+              <Box w="100%" margin={"2"} borderWidth={"0"}>
+                <FormControl isRequired>
+                  <Stack mx="8">
+                    <FormControl.Label>
+                      <Text
+                        fontFamily={"Jost"}
+                        fontSize="20px"
+                        fontWeight={"normal"}
+                      >
+                        Password
+                      </Text>
+                    </FormControl.Label>
+                    <Input
+                      bg="white"
+                      shadow={2}
+                      type="password"
+                      defaultValue=""
+                      placeholder="Enter Password"
+                      fontFamily={"Jost"}
+                      fontSize="sm"
+                      _focus={{ bg: "warmGray.50" }}
+                      borderWidth="0"
+                    />
+                    {/* <FormControl.HelperText>
+                      Must be atleast 6 characters.
+                    </FormControl.HelperText> */}
+                    <FormControl.ErrorMessage
+                      leftIcon={<WarningOutlineIcon size="xs" />}
+                    >
+                      Atleast 6 characters are required.
+                    </FormControl.ErrorMessage>
+                  </Stack>
+                </FormControl>
+              </Box>
+              <Box width={"100%"} borderWidth={"0"} margin="2">
+                <Button mx="8" bgColor={"black"}>
+                  <Text fontFamily="Jost" fontSize="20px" color={"white"}>
+                    Sign In
+                  </Text>
+                </Button>
+              </Box>
             </VStack>
           </Container>
         </Container>
