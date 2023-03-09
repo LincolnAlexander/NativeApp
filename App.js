@@ -40,6 +40,7 @@ import {
   Input,
   WarningOutlineIcon,
   Button,
+  KeyboardAvoidingView,
 } from "native-base";
 
 function Example() {
@@ -79,8 +80,11 @@ export default function App() {
   const [password, setPassword] = React.useState({});
 
   const validate = () => {
-    if (username.name === undefined) Alert.alert("Undefined");
-    else Alert.alert("" + username.name);
+    if (username.name === undefined || password.password === undefined) {
+      Alert.alert("Undefined");
+    } else {
+      Alert.alert("" + username.name + " " + password.password);
+    }
   };
   if (!loaded) return null;
   return (
@@ -103,18 +107,14 @@ export default function App() {
         bg="#E6EBD5"
         alignItems="center"
         justifyContent={"center"}
-        borderWidth="2"
-        borderColor="cyan.500"
         flexDirection={"column"}
         w="100%"
       >
         <Container
           flex="1"
-          borderWidth="2"
-          borderColor="cyan.500"
           w={"full"}
           alignItems={"center"}
-          justifyContent="center"
+          justifyContent="flex-end"
           maxWidth="100%"
         >
           <Text fontFamily="Jost" fontSize="4xl">
@@ -123,8 +123,6 @@ export default function App() {
         </Container>
         <Container
           flex="2"
-          borderWidth="2"
-          borderColor="cyan.500"
           width="100%"
           alignItems={"center"}
           justifyContent="center"
@@ -148,7 +146,7 @@ export default function App() {
               justifyContent="center"
             >
               <Box w="100%" margin={"2"} borderWidth={"0"}>
-                <FormControl isRequired>
+                <FormControl>
                   <Stack mx="8">
                     <FormControl.Label>
                       <Text
@@ -167,11 +165,17 @@ export default function App() {
                       placeholder="Enter Username"
                       fontFamily={"Jost"}
                       fontSize="sm"
-                      _focus={{ bg: "warmGray.50" }}
+                      _focus={{
+                        bg: "warmGray.50",
+                        borderColor: "black",
+                        borderWidth: "1",
+                      }}
                       borderWidth="0"
                       onChangeText={(value) =>
                         setUsername({ ...username, name: value })
                       }
+                      w="250"
+                      h="54"
                     />
                     {/* <FormControl.HelperText>
                       Must be atleast 6 characters.
@@ -184,8 +188,9 @@ export default function App() {
                   </Stack>
                 </FormControl>
               </Box>
+
               <Box w="100%" margin={"2"} borderWidth={"0"}>
-                <FormControl isRequired>
+                <FormControl>
                   <Stack mx="8">
                     <FormControl.Label>
                       <Text
@@ -204,8 +209,17 @@ export default function App() {
                       placeholder="Enter Password"
                       fontFamily={"Jost"}
                       fontSize="sm"
-                      _focus={{ bg: "warmGray.50" }}
+                      _focus={{
+                        bg: "warmGray.50",
+                        borderColor: "black",
+                        borderWidth: "2",
+                      }}
                       borderWidth="0"
+                      onChangeText={(value) =>
+                        setPassword({ ...password, password: value })
+                      }
+                      w="250"
+                      h="54"
                     />
                     {/* <FormControl.HelperText>
                       Must be atleast 6 characters.
@@ -219,7 +233,13 @@ export default function App() {
                 </FormControl>
               </Box>
               <Box width={"100%"} borderWidth={"0"} margin="2">
-                <Button mx="8" bgColor={"black"} onPress={validate}>
+                <Button
+                  mx="8"
+                  bgColor={"black"}
+                  onPress={validate}
+                  w="250"
+                  h="54"
+                >
                   <Text fontFamily="Jost" fontSize="20px" color={"white"}>
                     Sign In
                   </Text>
