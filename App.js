@@ -41,6 +41,8 @@ import {
   WarningOutlineIcon,
   Button,
   KeyboardAvoidingView,
+  Pressable,
+  Flex,
 } from "native-base";
 
 function Example() {
@@ -104,7 +106,7 @@ export default function App() {
       </Text> */}
       <Box
         flex="1"
-        bg="#E6EBD5"
+        bg="#8F9B81"
         alignItems="center"
         justifyContent={"center"}
         flexDirection={"column"}
@@ -122,18 +124,19 @@ export default function App() {
           </Text>
         </Container>
         <Container
-          flex="2"
+          flex="3"
           width="100%"
           alignItems={"center"}
-          justifyContent="center"
+          justifyContent="flex-start"
           maxWidth="100%"
+          marginTop={"8"}
         >
           <Container
             flex="1"
             bg="#B6AD90"
             width={"75%"}
-            height={"80%"}
-            maxHeight="80%"
+            height={"50%"}
+            maxHeight="60%"
             maxWidth="100%"
             borderRadius={"sm"}
           >
@@ -158,7 +161,7 @@ export default function App() {
                       </Text>
                     </FormControl.Label>
                     <Input
-                      bg="white"
+                      bg="#e5e7eb"
                       shadow={2}
                       type="text"
                       defaultValue=""
@@ -168,7 +171,7 @@ export default function App() {
                       _focus={{
                         bg: "warmGray.50",
                         borderColor: "black",
-                        borderWidth: "1",
+                        borderWidth: "1.5",
                       }}
                       borderWidth="0"
                       onChangeText={(value) =>
@@ -202,7 +205,7 @@ export default function App() {
                       </Text>
                     </FormControl.Label>
                     <Input
-                      bg="white"
+                      bg="#e5e7eb"
                       shadow={2}
                       type="password"
                       defaultValue=""
@@ -212,7 +215,7 @@ export default function App() {
                       _focus={{
                         bg: "warmGray.50",
                         borderColor: "black",
-                        borderWidth: "2",
+                        borderWidth: "1.5",
                       }}
                       borderWidth="0"
                       onChangeText={(value) =>
@@ -235,20 +238,34 @@ export default function App() {
               <Box width={"100%"} borderWidth={"0"} margin="2">
                 <Button
                   mx="8"
-                  bgColor={"black"}
+                  bgColor={"#2F4858"}
                   onPress={validate}
                   w="250"
                   h="54"
                 >
-                  <Text fontFamily="Jost" fontSize="20px" color={"white"}>
+                  <Text fontFamily="Jost" fontSize="20px" color={"#e5e7eb"}>
                     Sign In
                   </Text>
                 </Button>
               </Box>
             </VStack>
           </Container>
+          <Container margin={"2"} flex="none " alignItems={"center"}>
+            <Text fontFamily={"Jost"} fontSize="16px" color={"black"}>
+              Don't have an account?
+            </Text>
+            <Pressable onPress={() => Alert.alert()} textAlign="center">
+              <Text
+                fontFamily={"Jost"}
+                fontSize="16px"
+                color={"black"}
+                textAlign={"center"}
+              >
+                Sign Up
+              </Text>
+            </Pressable>
+          </Container>
         </Container>
-        <Container flex={"1"}></Container>
       </Box>
     </NativeBaseProvider>
   );
